@@ -5,9 +5,11 @@ const Positions = () => {
   const [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    axios("http://localhost:3002/allPositions").then((res) => {
-      setAllPositions(res.data);
-    });
+    axios("https://adorable-rabanadas-1f9aa7.netlify.app/allPositions").then(
+      (res) => {
+        setAllPositions(res.data);
+      }
+    );
   }, []);
   return (
     <>

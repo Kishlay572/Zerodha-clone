@@ -12,7 +12,7 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    axios.post("http://localhost:3002/newOrder", {
+    axios.post("https://adorable-rabanadas-1f9aa7.netlify.app/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
