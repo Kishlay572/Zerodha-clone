@@ -19,7 +19,7 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "20px" }} />
+      <img src="logo.png" style={{ width: "20px" }} alt="logo" />
       <div className="menus">
         <ul>
           <li>
