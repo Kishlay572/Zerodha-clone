@@ -5,7 +5,7 @@ const Positions = () => {
   const [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    axios("https://adorable-rabanadas-1f9aa7.netlify.app/allPositions").then(
+    axios("https://zerodha-clone-1-gxx6.onrender.com/allPositions").then(
       (res) => {
         setAllPositions(res.data);
       }

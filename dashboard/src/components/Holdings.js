@@ -8,7 +8,7 @@ const Holdings = () => {
 
   useEffect(() => {
     axios
-      .get("https://adorable-rabanadas-1f9aa7.netlify.app/allHoldings")
+      .get("https://zerodha-clone-1-gxx6.onrender.com/allHoldings")
       .then((res) => {
         console.log("res.data");
         setAllHoldings(res.data);
