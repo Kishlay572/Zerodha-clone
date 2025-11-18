@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Signup() {
   const [form, setForm] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
