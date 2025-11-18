@@ -4,10 +4,13 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { createSecretToken } = require("./SecretToken");
+const bcrypt = require("bcryptjs");
 
 const { HoldingModel } = require("./Model/HoldingModel");
 const { PositionModel } = require("./Model/PositionModel");
 const { OrderModel } = require("./Model/OrderModel");
+const { UserModel } = require("./Model/UserModel");
 
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3002;
@@ -15,6 +18,7 @@ const uri = process.env.MONGODB_URL;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json());
 
 mongoose.connect(uri);
 
@@ -192,6 +196,22 @@ app.get("/allHoldings", async (req, res) => {
 app.get("/allPositions", async (req, res) => {
   let allPositions = await PositionModel.find({});
   res.json(allPositions);
+});
+
+app.post("/signup", async (req, res) => {
+  try {
+    const { email, password, name } = req.body;
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) {
+      return res.json({ message: "User already exists" });
+    }
+    const user = await UserModel.create({ email, password, name });
+    res
+      .status(201)
+      .json({ message: "User signed in successfully", success: true, user });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 app.post("/neworder", async (req, res) => {
